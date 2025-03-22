@@ -29,12 +29,14 @@ function Sys.max 0
 	if-goto big
 	goto small
 
-label small
-push argument 1
-return
+
 
 label big
 push argument 0
+return
+
+label small
+push argument 1
 return
 
 function Sys.range 2
@@ -79,5 +81,5 @@ label LOOP_BODY
     goto LOOP
 
 label END
-    push argument 0 //push the address of the array.
+    push argument 0 
     return

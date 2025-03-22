@@ -39,47 +39,70 @@ label small
 push argument 1
 return 
 
-function Sys.range 2
-    push argument 0   
-    pop pointer 1     
-    push argument 1   
-    pop temp 9        
-    push constant 0
-    pop temp 10       
 
+
+function Sys. range 2
+	push constant 0
+	pop temp 10
+	push argument 0 
+	pop pointer 0
+	push argument 1
+	push constant 1
+	gt
+	not 
+	if-goto ZERO
+	push argument 1
+	push constant 1
+	sub
+	pop temp 9
+	push constant 16383
+	pop temp 2
+	push constant 16383
+	neg
+	pop temp 3
+	goto LOOP
+
+label ZERO
+push constant 0
+return
 label LOOP
-    push temp 10
-    push temp 9
-    lt
-    if-goto LOOP_BODY
-    goto END
-
-label LOOP_BODY
-    push pointer 1
-    push temp 10
-    add
-    pop pointer 0 
-
-    push argument 0
-    push temp 10
-    call Sys.min 2
-    pop temp 0
-
-    push pointer 0
-    push temp 0
-    pop that 0
-
-    push temp 10
-    push constant 1
-    add
-    pop temp 10
-
-    push pointer 1
-    push constant 1
-    add
-    pop pointer 1
-    goto LOOP
-
+push temp 10
+push temp 9
+Gt
+If-goto END 
+push this 0
+push temp 2
+call Sys.min 2
+pop temp 2
+push temp 2 
+push this 0
+eq
+not 
+if-goto maxi
+goto continue
+label maxi
+push this 0 
+push temp 3
+call Sys.max 2
+pop temp 3
+goto continue 
+label continue
+push pointer 0
+push constant 1
+Add
+pop pointer 0
+Pop temp 10
+Goto LOOP
+      
 label END
-    push argument 0 
-    return
+push temp 3
+push temp 2
+
+sub
+
+return
+
+function Sys.init 0
+	call Sys.range 2
+Label WHILE
+	goto WHILE

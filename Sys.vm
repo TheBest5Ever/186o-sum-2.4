@@ -85,6 +85,10 @@ label continue
 push pointer 0
 push constant 1
 add
+pop pointer 0
+push temp 10
+push constant 1
+add
 pop temp 10
 goto LOOP
       

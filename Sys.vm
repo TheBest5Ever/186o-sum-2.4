@@ -6,18 +6,18 @@ function sys.min 0
     push temp 0
     push temp 1
     lt
-    if-goto small
-    goto big
-label small
+    if-goto min
+    goto notmin
+label min
 push argument 0 
 return
-label big   
+label notmin
 push argument 1
 return
 
 
 function Sys.max 0
-	push argument o
+	push argument 0
 	push argument 1
 	pop temp 1
 	pop temp 0
@@ -36,50 +36,55 @@ return
 function Sys.range 2
   push argument 1
   push constant 1
-  lt
+  gt
+  not
   if-goto ZERO
   push argument 0
   pop pointer 0
   push argument 1
   push constant 1
   sub
-  pop temp 9
+  pop temp9
   push constant 16383
-  pop temp 2
+  pop temp2
   push constant 16383
   neg
-  pop temp 3
+  pop temp3
   push constant 0
-  pop temp 10
+  pop temp10
 LABEL LOOP
-  push temp 10
-  push temp 9
+  push temp10
+  push temp9
   gt
-  if-goto LOOP_END
+  if-goto END
   push this 0
-  push temp 2
+  push temp2
   call Sys.min 2
-  pop temp 2
-  push temp 2
+  pop temp2
+  push temp2
   push this 0
   eq
   not
   if-goto NEW_MAX
-  goto CONTINUE_LOOP
+  goto CONTINUE
 LABEL NEW_MAX
   push this 0
-  push temp 3
+  push temp3
   call Sys.max 2
-  pop temp 3
-LABEL CONTINUE_LOOP
+  pop temp3
+LABEL CONTINUE
   push pointer 0
   push constant 1
   add
-  pop temp 10
+  pop pointer 0
+  push temp10
+  push constant 1
+  add
+  pop temp10
   goto LOOP
-LABEL LOOP_END
-  push temp 3
-  push temp 2
+LABEL END
+  push temp3
+  push temp2
   sub
   return
 LABEL ZERO

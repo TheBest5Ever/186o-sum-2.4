@@ -1,4 +1,4 @@
-function sys.min 0
+function Sys.min 0
     push argument 0
     push argument 1
     pop temp 1

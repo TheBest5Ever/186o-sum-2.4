@@ -55,44 +55,44 @@ function Sys.range 2
     goto LOOP
 
 label zero
-    push constant 0
-    return
+push constant 0
+return
 
 label LOOP
-    push temp 10
-    push temp 9
-    gt
-    if-goto END 
-    push this 0
-    push temp 0
-    call Sys.min 2
-    pop temp 0
-    push temp 0 
-    push this 0
-    eq
-    not 
-    if-goto MAXI
-    goto continue
+push temp 10
+push temp 9
+gt
+if-goto END 
+push this 0
+push temp 0
+call Sys.min 2
+pop temp 0
+push temp 0 
+push this 0
+eq
+not 
+if-goto MAXI
+goto continue
 
 label MAXI
-    push this 0 
-    push temp 1
-    call Sys.max 2
-    pop temp 1
-    goto continue 
+push this 0 
+push temp 1
+call Sys.max 2
+pop temp 1
+goto continue 
 
 label continue
-    push pointer 0
-    push constant 1
-    add
-    pop temp 10
-    goto LOOP
+push pointer 0
+push constant 1
+add
+pop temp 10
+goto LOOP
       
 label END
-    push temp 1
-    push temp 0
-    sub
-    return
+push temp 1
+push temp 0
+sub
+return
 
 function Sys.init 0
     call Sys.range 2

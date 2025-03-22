@@ -55,44 +55,44 @@ function Sys.range 2
     goto LOOP
 
 label LOOP
-    push temp 0
-    push temp 1
-    gt
-    if-goto END
-    push this 0
-    push temp 2
-    call Sys.min 2
-    pop temp 2
-    push temp 2
-    push this 0
-    eq
-    not
-    if-goto UPDATE_MAX
-    goto CONTINUE_LOOP
+push temp 0
+push temp 1
+gt
+if-goto END
+push this 0
+push temp 2
+call Sys.min 2
+pop temp 2
+push temp 2
+push this 0
+eq
+not
+if-goto UPDATE_MAX
+goto CONTINUE_LOOP
 
 label UPDATE_MAX
-    push this 0
-    push temp 3
-    call Sys.max 2
-    pop temp 3
-    goto CONTINUE_LOOP
+push this 0
+push temp 3
+call Sys.max 2
+pop temp 3
+goto CONTINUE_LOOP
 
 label CONTINUE_LOOP
-    push pointer 0
-    push constant 1
-    add
-    pop temp 0
-    goto LOOP_START
+push pointer 0
+push constant 1
+add
+pop temp 0
+goto LOOP_START
 
 label ZERO
-    push constant 0
-    return
+push constant 0
+return
 
 label END
-    push temp 3
-    push temp 2
-    sub
-    return
+push temp 3
+push temp 2
+sub
+return
 
 function Sys.init 0
     call Sys.range 2

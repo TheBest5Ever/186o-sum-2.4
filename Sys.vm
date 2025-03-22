@@ -35,64 +35,64 @@ return
 
 function Sys.range 2
     push constant 0
-    pop temp 0
-    push argument 0
+    pop temp 10
+    push argument 0 
     pop pointer 0
     push argument 1
     push constant 1
     gt
-    not
-    if-goto ZERO
+    not 
+    if-goto zero
     push argument 1
     push constant 1
     sub
-    pop temp 1
+    pop temp 9
     push constant 16383
-    pop temp 2
+    pop temp 0
     push constant 16383
     neg
-    pop temp 3
+    pop temp 1
     goto LOOP
 
+label zero
+    push constant 0
+    return
+
 label LOOP
-push temp 0
-push temp 1
-gt
-if-goto END
-push this 0
-push temp 2
-call Sys.min 2
-pop temp 2
-push temp 2
-push this 0
-eq
-not
-if-goto UPDATE_MAX
-goto CONTINUE_LOOP
+    push temp 10
+    push temp 9
+    gt
+    if-goto END 
+    push this 0
+    push temp 0
+    call Sys.min 2
+    pop temp 0
+    push temp 0 
+    push this 0
+    eq
+    not 
+    if-goto MAXI
+    goto continue
 
-label UPDATE_MAX
-push this 0
-push temp 3
-call Sys.max 2
-pop temp 3
-goto CONTINUE_LOOP
+label MAXI
+    push this 0 
+    push temp 1
+    call Sys.max 2
+    pop temp 1
+    goto continue 
 
-label CONTINUE_LOOP
-push pointer 0
-push constant 1
-add
-pop temp 0
-goto LOOP_START
-
-label ZERO
-push constant 0
-return
-
+label continue
+    push pointer 0
+    push constant 1
+    add
+    pop temp 10
+    goto LOOP
+      
 label END
-push temp 3
-push temp 2
-sub
-return
+    push temp 1
+    push temp 0
+    sub
+    return
 
 function Sys.init 0
     call Sys.range 2

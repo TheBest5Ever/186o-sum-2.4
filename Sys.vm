@@ -8,9 +8,11 @@ function sys.min 0
     lt
     if-goto min
     goto notmin
+
 label min
 push argument 0 
 return
+
 label notmin
 push argument 1
 return
@@ -26,9 +28,11 @@ function Sys.max 0
 	gt
 	if-goto big
 	goto small
+
 label small
 push argument 1
 return
+
 label big
 push argument 0
 return

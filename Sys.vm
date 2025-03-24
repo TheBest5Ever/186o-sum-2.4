@@ -64,9 +64,6 @@ function Sys.range 2
 	pop temp 3
 	goto LOOP
 
-label ZERO
-push constant 0
-return
 
 label LOOP
 push temp 8
@@ -100,6 +97,9 @@ add
 pop temp 8
 goto LOOP
 
+label ZERO
+push constant 0
+return
 
 
 label END

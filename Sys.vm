@@ -41,7 +41,7 @@ return
 
 
 
-function Sys. range 2
+function Sys.range 2
 	push constant 0
 	pop temp 10
 	push argument 0 
@@ -68,8 +68,8 @@ return
 label LOOP
 push temp 10
 push temp 9
-Gt
-If-goto END 
+gt
+if-goto END 
 push this 0
 push temp 2
 call Sys.min 2
@@ -89,20 +89,19 @@ goto continue
 label continue
 push pointer 0
 push constant 1
-Add
+add
 pop pointer 0
 Pop temp 10
-Goto LOOP
+goto LOOP
       
 label END
 push temp 3
 push temp 2
 
 sub
-
 return
 
 function Sys.init 0
 	call Sys.range 2
-Label WHILE
+label WHILE
 	goto WHILE

@@ -8,6 +8,8 @@ function Sys.min 0
     lt
     if-goto mini
     goto notmin
+	push constant 2
+	pop local 2
 
 label mini
 push argument 0 
@@ -43,9 +45,7 @@ return
 
 function Sys.range 2
 	push constant 0
-	pop temp 8
-	push constant 0
-	pop temp 6
+	pop temp 7
 	push argument 0 
 	pop pointer 0
 	push argument 1
@@ -56,7 +56,7 @@ function Sys.range 2
 	push argument 1
 	push constant 1
 	sub
-	pop temp 7
+	pop temp 6
 	push constant 16383
 	pop temp 2
 	push constant 16383
@@ -66,8 +66,8 @@ function Sys.range 2
 
 
 label LOOP
-push temp 8
 push temp 7
+push temp 6
 gt
 if-goto END 
 push this 0
@@ -91,10 +91,10 @@ push pointer 0
 push constant 1
 add
 pop pointer 0
-push temp 8
+push temp 7
 push constant 1
 add
-pop temp 8
+pop temp 7
 goto LOOP
 
 label ZERO
